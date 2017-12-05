@@ -2,6 +2,8 @@
 // node iserver.js 127.0.0.1 3000
 
 var udp = require('dgram');
+var adler32 = require('adler32');
+
 const args = process.argv[2];
 var host = args;
 const args2 = process.argv[3];
@@ -17,6 +19,7 @@ server.on('error',function(error){
 
 //MESSAGE
 server.on('message',function(payload,info){
+    var sum = adler32.sum(payload);
     console.log('Payload received from client');
     console.log('----------------------------');
     console.log(payload.toString());

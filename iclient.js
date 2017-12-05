@@ -2,6 +2,7 @@
 // node iclient.js 127.0.0.1 3000
 
 var udp = require('dgram');
+
 const args = process.argv[2];
 var host = args;
 const args2 = process.argv[3];
@@ -13,7 +14,6 @@ var counter = 0;
 
 setInterval(() => {
     var quote = new Buffer('\"It always seems impossible until it\'s done\" - Nelson Mandela \n');
-
     var time = Math.floor(Date.now()/1000);
     var timeInSeconds = new Buffer('Time in Seconds: ' + time.toString() + '\n');
     var timeCounter = ++counter;
